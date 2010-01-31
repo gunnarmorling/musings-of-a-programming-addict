@@ -1,0 +1,8 @@
+<xb:config 
+	xmlns:videorental="http://www.gunnarmorling.de/moapa/videorental/types" 
+    xmlns:xb="http://www.bea.com/2002/09/xbean/config">
+
+    <xb:namespace uri="http://www.gunnarmorling.de/moapa/videorental/types">
+		<xb:package>xmlbeans</xb:package>
+    </xb:namespace>
+</xb:config>

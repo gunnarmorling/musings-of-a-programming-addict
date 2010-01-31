@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	targetNamespace="http://www.gunnarmorling.de/moapa/videorental/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:videorental="http://www.gunnarmorling.de/moapa/videorental/types">
+
+	<element name="GetMovieByIdRequest">
+		<complexType>
+			<sequence>
+				<element name="Id" type="long" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="GetMovieByIdResponse">
+		<complexType>
+			<sequence>
+				<element type="videorental:Movie" name="Movie" minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="Movie">
+		<sequence>
+			<element name="Id" type="long" />
+			<element name="Title" type="string" />
+			<element name="RunTime" type="int" />
+			<element name="Director" type="string" minOccurs="0" />
+			<element name="ReleaseDate" type="date" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>

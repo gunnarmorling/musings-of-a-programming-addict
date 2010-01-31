@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions 
+	name="VideoRental" 
+	targetNamespace="http://www.gunnarmorling.de/moapa/videorental"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://www.gunnarmorling.de/moapa/videorental"
+	xmlns:videorental="http://www.gunnarmorling.de/moapa/videorental/types"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.gunnarmorling.de/moapa/videorental/types"
+				schemaLocation="videorental.xsd" />
+		</xsd:schema>
+	</types>
+	
+	<message name="GetMovieByIdRequestMessage">
+		<part name="body" element="videorental:GetMovieByIdRequest" />
+	</message>
+	<message name="GetMovieByIdResponseMessage">
+		<part name="body" element="videorental:GetMovieByIdResponse" />
+	</message>
+	
+	<portType name="VideoRentalPortType">
+		<operation name="GetMovieById">
+			<input message="tns:GetMovieByIdRequestMessage" />
+			<output message="tns:GetMovieByIdResponseMessage" />
+		</operation>
+	</portType>
+	
+	<binding name="VideoRentalSoapBinding" type="tns:VideoRentalPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+	
+		<operation name="GetMovieById">
+			<soap:operation soapAction="GetMovieById" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="VideoRentalService">
+		<port name="VideoRentalPort" binding="tns:VideoRentalSoapBinding">
+			<soap:address location="TODO" />
+		</port>
+	</service>
+</definitions>
