@@ -20,6 +20,22 @@
 		</complexType>
 	</element>
 
+	<element name="FindMoviesByDirectorRequest">
+		<complexType>
+			<sequence>
+				<element name="Director" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="FindMoviesByDirectorResponse">
+		<complexType>
+			<sequence>
+				<element type="videorental:Movie" name="Movie" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	
 	<complexType name="Movie">
 		<sequence>
 			<element name="Id" type="long" />

@@ -1,6 +1,8 @@
 package de.gmorling.moapa.videorental.service;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -25,6 +27,18 @@ public class MovieRepositoryMockImpl implements MovieRepository {
 	
 	public Movie getMovieById(long id) {
 		return sampleMovies.get(id);
+	}
+	
+	public List<Movie> findMoviesByDirector(String director) {
+		List<Movie> theValue = new ArrayList<Movie>();
+		
+		for (Movie oneMovie : sampleMovies.values()) {
+			if(oneMovie.getDirector().equals(director)) {
+				theValue.add(oneMovie);
+			}
+			
+		}
+		return theValue;
 	}
 
 }

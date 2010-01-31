@@ -21,10 +21,21 @@
 		<part name="body" element="videorental:GetMovieByIdResponse" />
 	</message>
 	
+	<message name="FindMoviesByDirectorRequestMessage">
+		<part name="body" element="videorental:FindMoviesByDirectorRequest" />
+	</message>
+	<message name="FindMoviesByDirectorResponseMessage">
+		<part name="body" element="videorental:FindMoviesByDirectorResponse" />
+	</message>
+	
 	<portType name="VideoRentalPortType">
 		<operation name="GetMovieById">
 			<input message="tns:GetMovieByIdRequestMessage" />
 			<output message="tns:GetMovieByIdResponseMessage" />
+		</operation>
+		<operation name="FindMoviesByDirector">
+			<input message="tns:FindMoviesByDirectorRequestMessage" />
+			<output message="tns:FindMoviesByDirectorResponseMessage" />
 		</operation>
 	</portType>
 	
@@ -40,6 +51,15 @@
 				<soap:body use="literal" />
 			</output>
 		</operation>
+		<operation name="FindMoviesByDirector">
+			<soap:operation soapAction="FindMoviesByDirector" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>		
 	</binding>
 	
 	<service name="VideoRentalService">

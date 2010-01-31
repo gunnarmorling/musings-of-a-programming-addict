@@ -1,11 +1,14 @@
 package de.gmorling.moapa.videorental.ws.jaxb;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.jws.WebService;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
+import jaxb.FindMoviesByDirectorRequest;
+import jaxb.FindMoviesByDirectorResponse;
 import jaxb.GetMovieByIdRequest;
 import jaxb.GetMovieByIdResponse;
 import jaxb.Movie;
@@ -26,6 +29,20 @@ public class VideoRentalPort implements VideoRentalPortType {
 
 		if(movie != null) {
 			response.setMovie(convert(movie));
+		}
+		
+		return response;
+	}
+	
+	public FindMoviesByDirectorResponse findMoviesByDirector(
+			FindMoviesByDirectorRequest request) {
+		
+		FindMoviesByDirectorResponse response = new FindMoviesByDirectorResponse();
+		
+		List<de.gmorling.moapa.videorental.domain.Movie> movies = movieRepository.findMoviesByDirector(request.getDirector());
+		
+		for (de.gmorling.moapa.videorental.domain.Movie movie : movies) {
+			response.getMovie().add(convert(movie));
 		}
 		
 		return response;
