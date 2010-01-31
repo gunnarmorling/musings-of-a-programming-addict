@@ -66,7 +66,6 @@ public class Customer {
 		protected Customer buildInternal() {
 			return new Customer(this);
 		}
-
 	}
 
 	@Min(1)
