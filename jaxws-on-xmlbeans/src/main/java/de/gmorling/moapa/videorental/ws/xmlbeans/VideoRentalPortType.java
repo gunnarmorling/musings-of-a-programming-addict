@@ -1,9 +1,9 @@
 package de.gmorling.moapa.videorental.ws.xmlbeans;
 
-import xmlbeans.FindMoviesByDirectorRequestDocument.FindMoviesByDirectorRequest;
-import xmlbeans.FindMoviesByDirectorResponseDocument.FindMoviesByDirectorResponse;
-import xmlbeans.GetMovieByIdRequestDocument.GetMovieByIdRequest;
-import xmlbeans.GetMovieByIdResponseDocument.GetMovieByIdResponse;
+import xmlbeans.GetMovieByIdRequest;
+import xmlbeans.GetMovieByIdResponse;
+import xmlbeans.FindMoviesByDirectorRequest;
+import xmlbeans.FindMoviesByDirectorResponse;
 
 public interface VideoRentalPortType {
 

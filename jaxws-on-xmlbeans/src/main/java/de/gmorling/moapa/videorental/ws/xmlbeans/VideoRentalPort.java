@@ -5,10 +5,10 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import xmlbeans.Movie;
-import xmlbeans.FindMoviesByDirectorRequestDocument.FindMoviesByDirectorRequest;
-import xmlbeans.FindMoviesByDirectorResponseDocument.FindMoviesByDirectorResponse;
-import xmlbeans.GetMovieByIdRequestDocument.GetMovieByIdRequest;
-import xmlbeans.GetMovieByIdResponseDocument.GetMovieByIdResponse;
+import xmlbeans.FindMoviesByDirectorRequest;
+import xmlbeans.FindMoviesByDirectorResponse;
+import xmlbeans.GetMovieByIdRequest;
+import xmlbeans.GetMovieByIdResponse;
 import de.gmorling.moapa.videorental.service.MovieRepository;
 import de.gmorling.moapa.videorental.service.MovieRepositoryMockImpl;
 

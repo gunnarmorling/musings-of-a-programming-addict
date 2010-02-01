@@ -4,38 +4,37 @@
 	xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:videorental="http://www.gunnarmorling.de/moapa/videorental/types">
 
-	<element name="GetMovieByIdRequest">
-		<complexType>
-			<sequence>
-				<element name="Id" type="long" />
-			</sequence>
-		</complexType>
-	</element>
-	
-	<element name="GetMovieByIdResponse">
-		<complexType>
-			<sequence>
-				<element type="videorental:Movie" name="Movie" minOccurs="0" />
-			</sequence>
-		</complexType>
-	</element>
+	<element name="GetMovieByIdRequest" type="videorental:GetMovieByIdRequest" />
+	<element name="GetMovieByIdResponse" type="videorental:GetMovieByIdResponse" />
 
-	<element name="FindMoviesByDirectorRequest">
-		<complexType>
-			<sequence>
-				<element name="Director" type="string" />
-			</sequence>
-		</complexType>
-	</element>
-	
-	<element name="FindMoviesByDirectorResponse">
-		<complexType>
-			<sequence>
-				<element type="videorental:Movie" name="Movie" minOccurs="0" maxOccurs="unbounded"/>
-			</sequence>
-		</complexType>
-	</element>
-	
+	<element name="FindMoviesByDirectorRequest" type="videorental:FindMoviesByDirectorRequest" />
+	<element name="FindMoviesByDirectorResponse" type="videorental:FindMoviesByDirectorResponse" />
+
+	<complexType name="GetMovieByIdRequest">
+		<sequence>
+			<element name="Id" type="long" />
+		</sequence>
+	</complexType>
+
+	<complexType name="GetMovieByIdResponse">
+		<sequence>
+			<element type="videorental:Movie" name="Movie" minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<complexType name="FindMoviesByDirectorRequest">
+		<sequence>
+			<element name="Director" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="FindMoviesByDirectorResponse">
+		<sequence>
+			<element type="videorental:Movie" name="Movie" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
 	<complexType name="Movie">
 		<sequence>
 			<element name="Id" type="long" />

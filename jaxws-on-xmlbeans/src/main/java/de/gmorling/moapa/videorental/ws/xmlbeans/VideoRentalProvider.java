@@ -14,8 +14,8 @@ import xmlbeans.FindMoviesByDirectorRequestDocument;
 import xmlbeans.FindMoviesByDirectorResponseDocument;
 import xmlbeans.GetMovieByIdRequestDocument;
 import xmlbeans.GetMovieByIdResponseDocument;
-import xmlbeans.FindMoviesByDirectorRequestDocument.FindMoviesByDirectorRequest;
-import xmlbeans.GetMovieByIdRequestDocument.GetMovieByIdRequest;
+import xmlbeans.FindMoviesByDirectorRequest;
+import xmlbeans.GetMovieByIdRequest;
 
 @WebServiceProvider
 @ServiceMode(value=Mode.MESSAGE)
