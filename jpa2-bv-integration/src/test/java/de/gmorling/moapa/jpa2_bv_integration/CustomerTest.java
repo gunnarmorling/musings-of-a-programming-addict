@@ -16,7 +16,9 @@
 
 package de.gmorling.moapa.jpa2_bv_integration;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,8 +33,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import de.gmorling.moapa.jpa2_bv_integration.Customer;
 
 public class CustomerTest {
 
