@@ -68,7 +68,7 @@ public class SelfValidatingTest {
 				.validate(testEvent);
 		assertEquals(1, constraintViolations.size());
 
-		assertEquals("Validatable object couldn't be validated successfully.",
+		assertEquals("Object couldn't be validated successfully.",
 				constraintViolations.iterator().next().getMessage());
 	}
 
