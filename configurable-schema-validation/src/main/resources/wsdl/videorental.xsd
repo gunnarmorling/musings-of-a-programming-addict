@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+     Copyright 2010 Gunnar Morling (http://www.gunnarmorling.de/)
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+
+<schema 
+	targetNamespace="http://www.gunnarmorling.de/moapa/videorental/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:videorental="http://www.gunnarmorling.de/moapa/videorental/types">
+
+	<element name="GetMovieByIdRequest" type="videorental:GetMovieByIdRequest" />
+	<element name="GetMovieByIdResponse" type="videorental:GetMovieByIdResponse" />
+
+	<element name="FindMoviesByDirectorRequest" type="videorental:FindMoviesByDirectorRequest" />
+	<element name="FindMoviesByDirectorResponse" type="videorental:FindMoviesByDirectorResponse" />
+
+	<complexType name="GetMovieByIdRequest">
+		<sequence>
+			<element name="Id" type="long" />
+		</sequence>
+	</complexType>
+
+	<complexType name="GetMovieByIdResponse">
+		<sequence>
+			<element type="videorental:Movie" name="Movie" minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<complexType name="FindMoviesByDirectorRequest">
+		<sequence>
+			<element name="Director" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="FindMoviesByDirectorResponse">
+		<sequence>
+			<element type="videorental:Movie" name="Movie" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Movie">
+		<sequence>
+			<element name="Id" type="long" />
+			<element name="Title" type="string" />
+			<element name="RunTime" type="int" />
+			<element name="Director" type="string" minOccurs="0" />
+			<element name="ReleaseDate" type="date" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>
