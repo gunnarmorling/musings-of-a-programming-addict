@@ -1,0 +1,13 @@
+<constraint-mappings
+        xmlns="http://jboss.org/xml/ns/javax/validation/mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation=
+             "http://jboss.org/xml/ns/javax/validation/mapping validation-mapping-1.0.xsd">
+   
+    <constraint-definition annotation="javax.validation.constraints.Past">
+        <validated-by include-existing-validators="true">
+             <value>de.gmorling.moapa.joda_bv_integration.PastValidatorForReadableInstant</value>
+        </validated-by>
+    </constraint-definition>
+    
+</constraint-mappings>
