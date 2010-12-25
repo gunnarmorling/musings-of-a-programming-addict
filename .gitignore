@@ -3,3 +3,6 @@ derby.log
 .classpath
 .settings
 .project
+.metadata
+test-output
+.DS_Store
