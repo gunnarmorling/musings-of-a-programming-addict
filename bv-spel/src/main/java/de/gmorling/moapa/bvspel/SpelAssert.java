@@ -25,6 +25,36 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+/**
+ * <p>
+ * A constraint annotation for the Bean Validation API (JSR 303) which allows
+ * constraints to be expressed using Spring's expression language (SpEL).
+ * </p>
+ * <p>
+ * This constraint is in particular useful to express constraints which's
+ * validation outcome depend on multiple attributes of the annotated bean in an
+ * ad-hoc manner.
+ * </p>
+ * <p>
+ * The following shows the canonical example of a class representing calendar
+ * events where the start date always shall be earlier than the end date:
+ * </p>
+ * 
+ * <pre>
+ * &#064;SpelAssert(&quot;startDate &lt; endDate&quot;)
+ * public class CalendarEvent {
+ * 
+ * 	private Date startDate;
+ * 
+ * 	private Date endDate;
+ * 
+ * 	// ...
+ * }
+ * </pre>
+ * 
+ * @author Gunnar Morling
+ * 
+ */
 @Target({ TYPE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = SpelAssertValidator.class)
@@ -37,10 +67,18 @@ public @interface SpelAssert {
 
 	Class<? extends Payload>[] payload() default {};
 
+	/**
+	 * A SpEL script expression to be evaluated against the annotated object.
+	 * This expression must return {@link Boolean#TRUE} if the annotated object
+	 * is valid, {@link Boolean#FALSE} otherwise. Any expression returning a non
+	 * boolean value will yield in an exception upon validation.
+	 * 
+	 * @return A SpEL script expression.
+	 */
 	String value();
 
 	/**
-	 * Defines several {@code @SpELAssert} annotations on the same element.
+	 * Defines several {@link SpelAssert} annotations on the same element.
 	 */
 	@Target({ TYPE })
 	@Retention(RUNTIME)

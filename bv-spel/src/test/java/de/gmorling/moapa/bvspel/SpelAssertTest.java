@@ -16,7 +16,6 @@
 package de.gmorling.moapa.bvspel;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
@@ -33,6 +32,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * Test for {@link SpelAssert} and it's validator.
+ * 
+ * @author Gunnar Morling
+ * 
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 public class SpelAssertTest {
@@ -56,11 +61,6 @@ public class SpelAssertTest {
 	}
 
 	@Test
-	public void validatorIsNotNull() {
-		assertNotNull(validator);
-	}
-
-	@Test
 	public void validEvent() {
 
 		CalendarEvent event = new CalendarEvent();
@@ -71,7 +71,7 @@ public class SpelAssertTest {
 	}
 
 	@Test
-	public void invalidEvent() {
+	public void invalidEventYieldsConstraintViolation() {
 
 		CalendarEvent event = new CalendarEvent();
 		event.setStartDate(endDate);

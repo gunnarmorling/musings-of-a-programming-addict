@@ -20,13 +20,21 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.expression.Expression;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.ExpressionParser;
 
+/**
+ * Implements the validation logic for the {@link SpelAssert} constraint
+ * annotation. Uses a {@link ExpressionParser} to parse the given SpEL
+ * expression and evaluates the same using the annotated object as root object.
+ * 
+ * @author Gunnar Morling
+ * 
+ */
 public class SpelAssertValidator implements
 		ConstraintValidator<SpelAssert, Object> {
 
 	@Inject
-	private SpelExpressionParser parser;
+	private ExpressionParser parser;
 
 	private Expression expression;
 
