@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.gmorling.moapa</groupId>
+	<artifactId>bom</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<name>MoaPA BOM</name>
+
+	<description>
+		Declares the versions for several 3rd party dependencies used by the
+		Maven projects accompanying the "Musings of a Programming Addict" blog. 
+		This "bill of materials" (BOM) is imported in the parent POM inherited
+		by those projects, which therefore don't have to specify any version 
+		for the dependencies declared here. Only dependencies used in several 
+		projects are managed here, any other dependencies are managed locally 
+		in the project using them.
+	</description>
+	<developers>
+		<developer>
+			<name>Gunnar Morling</name>
+		</developer>
+	</developers>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.0.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>4.1.0.Final</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-jdk14</artifactId>
+				<version>1.5.6</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.2</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
