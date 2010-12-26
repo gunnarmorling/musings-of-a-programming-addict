@@ -29,7 +29,7 @@ import de.gmorling.moapa.jaxwsonspring.ShopClientPlainJaxWs;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-public class ShopClientTest {
+public class ShopClientIntegrationTest {
 
 	@Inject
 	private ShopClientPlainJaxWs shopClientPlainJaxWs;

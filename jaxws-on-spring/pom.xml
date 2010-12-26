@@ -10,7 +10,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jaxws-on-spring</artifactId>
-	<name>jaxws-on-spring</name>
+	<name>JAX-WS on Spring</name>
 
 	<dependencies>
 		<dependency>

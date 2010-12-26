@@ -32,6 +32,15 @@ import javax.xml.ws.Endpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * A dummy web service implementation for <code>products.wsdl</code> to be used
+ * for integration tests of the products web service client. It uses the
+ * {@link Endpoint} API of JAX-WS to publish that service on
+ * <code>localhost</code>.
+ * 
+ * @author Gunnar Morling
+ * 
+ */
 public class ShopServer {
 
 	private static final String NAMESPACE = "http://www.gunnarmorling.de/moapa/shop/products";
