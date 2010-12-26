@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="shopServer" class="de.gmorling.moapa.jaxwsonspring.server.ShopServer">
+		<property name="endPointUrl"
+			value="http://localhost:8080/jaxws-on-spring/Products" />
+		<property name="wsdlName" value="/wsdl/products.wsdl" />
+	</bean>
+
+	<bean id="productsPort"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="de.gunnarmorling.moapa.shop.products.ProductsPortType" />
+		<property name="wsdlDocumentUrl" value="wsdl/products.wsdl" />
+		<property name="endpointAddress"
+			value="http://localhost:8080/jaxws-on-spring/Products" />
+		<property name="namespaceUri"
+			value="http://www.gunnarmorling.de/moapa/shop/products" />
+		<property name="serviceName" value="ProductsService" />
+	</bean>
+
+	<bean id="shopClient" class="de.gmorling.moapa.jaxwsonspring.ShopClient" />
+	
+	<bean id="shopClientPlainJaxWs" class="de.gmorling.moapa.jaxwsonspring.ShopClientPlainJaxWs">
+		<property name="endPointUrl" value="http://localhost:8080/jaxws-on-spring/Products"/>
+	</bean>
+	
+</beans>

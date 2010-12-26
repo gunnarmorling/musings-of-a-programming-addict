@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.gunnarmorling.de/moapa/shop/products/types"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:products="http://www.gunnarmorling.de/moapa/shop/products/types">
+
+  <!-- GetProductById -->
+	<element name="GetProductByIdRequest">
+		<complexType>
+			<sequence>
+				<element name="Id" type="int" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetProductByIdResponse">
+		<complexType>
+			<sequence>
+				<element type="products:Product" name="Product" minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+  <!-- General-purpose types -->
+	<complexType name="Product">
+		<sequence>
+			<element name="Id" type="int" />
+			<element name="Name" type="string" />
+			<element name="Price" type="decimal" />
+			<element name="Size" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>

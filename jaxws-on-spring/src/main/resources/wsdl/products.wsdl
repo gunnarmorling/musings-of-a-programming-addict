@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions 
+	name="Products" 
+	targetNamespace="http://www.gunnarmorling.de/moapa/shop/products"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://www.gunnarmorling.de/moapa/shop/products"
+	xmlns:products="http://www.gunnarmorling.de/moapa/shop/products/types"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.gunnarmorling.de/moapa/shop/products/types"
+				schemaLocation="products.xsd" />
+		</xsd:schema>
+	</types>
+	<message name="GetProductByIdRequestMessage">
+		<part name="body" element="products:GetProductByIdRequest" />
+	</message>
+	<message name="GetProductByIdResponseMessage">
+		<part name="body" element="products:GetProductByIdResponse" />
+	</message>
+	
+	<portType name="ProductsPortType">
+
+		<operation name="GetProductById">
+			<input message="tns:GetProductByIdRequestMessage" />
+			<output message="tns:GetProductByIdResponseMessage" />
+		</operation>
+
+	</portType>
+	<binding name="ProductsSoapBinding" type="tns:ProductsPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+	
+		<operation name="GetProductById">
+			<soap:operation soapAction="GetProductById" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		
+	</binding>
+	<service name="ProductsService">
+		<port name="ProductsPort" binding="tns:ProductsSoapBinding">
+			<soap:address location="TODO" />
+		</port>
+	</service>
+</definitions>
