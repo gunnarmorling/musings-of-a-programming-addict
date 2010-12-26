@@ -13,9 +13,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+package de.gmorling.moapa.jpa2_bv_integration.groups;
 
-package de.gmorling.moapa.jpa2_bv_integration;
+import javax.validation.groups.Default;
 
-public interface DeletionAttributes {
-
+public interface CheckOnUpdate extends Default {
 }

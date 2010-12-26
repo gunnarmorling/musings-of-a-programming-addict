@@ -13,11 +13,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package de.gmorling.moapa.jpa2_bv_integration;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,22 +25,25 @@ import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import de.gmorling.moapa.jpa2_bv_integration.groups.CheckOnDeletion;
+import de.gmorling.moapa.jpa2_bv_integration.groups.CheckOnUpdate;
+
 @Entity
-@NamedQueries( { @NamedQuery(name = Customer.FIND_ALL_CUSTOMERS, query = "SELECT c FROM Customer c") })
+@NamedQueries({ @NamedQuery(name = Customer.FIND_ALL_CUSTOMERS, query = "SELECT c FROM Customer c") })
 public class Customer {
 
 	public final static String FIND_ALL_CUSTOMERS = "findAllCustomers";
 
 	@Id
-	@GeneratedValue
-	@NotNull
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull(groups = CheckOnUpdate.class)
 	private Long id;
 
 	@NotNull
 	@Size(min = 3, max = 80)
 	private String name;
 
-	@AssertTrue(groups = DeletionAttributes.class)
+	@AssertTrue(groups = CheckOnDeletion.class)
 	private boolean archived;
 
 	public Customer() {
@@ -51,8 +54,6 @@ public class Customer {
 		this.name = name;
 		archived = false;
 	}
-
-	// getters and setters ...
 
 	public Long getId() {
 		return id;

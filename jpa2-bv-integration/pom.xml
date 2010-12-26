@@ -120,5 +120,43 @@
 				</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+			<id>openjpa</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.apache.openjpa</groupId>
+					<artifactId>openjpa-all</artifactId>
+					<version>2.0.1</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>openjpa-maven-plugin</artifactId>
+						<version>1.2</version>
+						<configuration>
+							<includes>de/gmorling/moapa/jpa2_bv_integration/*.class</includes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>enhancer</id>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>enhance</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.openjpa</groupId>
+								<artifactId>openjpa</artifactId>
+								<version>2.0.1</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>

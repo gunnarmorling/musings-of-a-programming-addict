@@ -47,7 +47,10 @@ public class CustomerTest {
 
 	@AfterClass
 	public static void closeEntityManagerFactory() {
-		emf.close();
+
+		if (emf != null) {
+			emf.close();
+		}
 	}
 
 	@Before
@@ -59,6 +62,10 @@ public class CustomerTest {
 	@After
 	public void rollbackTransaction() {
 
+		if (em == null) {
+			return;
+		}
+
 		if (em.getTransaction().isActive())
 			em.getTransaction().rollback();
 
@@ -67,12 +74,36 @@ public class CustomerTest {
 	}
 
 	@Test
-	public void nameTooShort() {
+	public void nameTooShortOnInsert() {
 
 		try {
 			Customer customer = new Customer("Bo");
 			em.persist(customer);
 			em.flush();
+			fail("Expected ConstraintViolationException wasn't thrown.");
+		} catch (ConstraintViolationException e) {
+			assertEquals(1, e.getConstraintViolations().size());
+			ConstraintViolation<?> violation = e.getConstraintViolations()
+					.iterator().next();
+			assertEquals("name", violation.getPropertyPath().toString());
+			assertEquals(Size.class, violation.getConstraintDescriptor()
+					.getAnnotation().annotationType());
+		}
+	}
+
+	@Test
+	public void nameTooShortOnUpdate() {
+
+		try {
+			Customer customer = new Customer("Bob");
+			em.persist(customer);
+			em.flush();
+
+			em.detach(customer);
+			customer.setName("Bo");
+			em.merge(customer);
+			em.flush();
+
 			fail("Expected ConstraintViolationException wasn't thrown.");
 		} catch (ConstraintViolationException e) {
 			assertEquals(1, e.getConstraintViolations().size());
