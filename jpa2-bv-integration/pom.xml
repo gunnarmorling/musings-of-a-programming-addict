@@ -66,6 +66,15 @@
 					<scope>runtime</scope>
 				</dependency>
 			</dependencies>
+      <repositories>
+        <repository>
+           <id>EclipseLink Repo</id>
+           <url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
+           <snapshots>
+              <enabled>true</enabled>
+           </snapshots>
+        </repository>    
+      </repositories> 		
 		</profile>
 		<profile>
 			<id>hibernate</id>
