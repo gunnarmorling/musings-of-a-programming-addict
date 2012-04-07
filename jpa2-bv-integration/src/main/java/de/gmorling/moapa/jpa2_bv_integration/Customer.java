@@ -37,6 +37,9 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull(groups = CheckOnUpdate.class)
+	// sequences don't seem to work properly with OpenJPA
+	//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CustomerSequence")
+	//	@SequenceGenerator(name = "CustomerSequence", sequenceName = "INV_SEQ", allocationSize = 5)
 	private Long id;
 
 	@NotNull

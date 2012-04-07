@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project 
-	xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
@@ -19,29 +17,33 @@
 	<description>
 		A demo of the integration of JPA 2 and the Bean Validation API (JSR 303).
 	</description>
-	
+
 	<dependencies>
+
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
-			<version>10.7.1.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -57,15 +59,22 @@
 					<groupId>org.eclipse.persistence</groupId>
 					<artifactId>javax.persistence</artifactId>
 					<version>2.0.3</version>
-					<scope>compile</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.eclipse.persistence</groupId>
 					<artifactId>eclipselink</artifactId>
-					<version>2.1.2</version>
+					<version>2.3.2</version>
 					<scope>runtime</scope>
 				</dependency>
 			</dependencies>
+
+			<repositories>
+				<repository>
+					<id>EclipseLink</id>
+					<url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
+					<layout>default</layout>
+				</repository>
+			</repositories>
 		</profile>
 		<profile>
 			<id>hibernate</id>
@@ -73,23 +82,28 @@
 				<dependency>
 					<groupId>org.hibernate.javax.persistence</groupId>
 					<artifactId>hibernate-jpa-2.0-api</artifactId>
-					<version>1.0.0.Final</version>
+					<version>1.0.1.Final</version>
 				</dependency>
 				<dependency>
 					<groupId>org.hibernate</groupId>
 					<artifactId>hibernate-entitymanager</artifactId>
-					<version>3.6.0.Final</version>
+					<version>4.1.2.Final</version>
 					<scope>runtime</scope>
 				</dependency>
 			</dependencies>
 		</profile>
 		<profile>
 			<id>openjpa</id>
+
+			<properties>
+				<org.apache.openjpa.version>2.2.0</org.apache.openjpa.version>
+			</properties>
+
 			<dependencies>
 				<dependency>
 					<groupId>org.apache.openjpa</groupId>
 					<artifactId>openjpa-all</artifactId>
-					<version>2.0.1</version>
+					<version>${org.apache.openjpa.version}</version>
 				</dependency>
 			</dependencies>
 			<build>
@@ -114,7 +128,7 @@
 							<dependency>
 								<groupId>org.apache.openjpa</groupId>
 								<artifactId>openjpa</artifactId>
-								<version>2.0.1</version>
+								<version>${org.apache.openjpa.version}</version>
 							</dependency>
 						</dependencies>
 					</plugin>
