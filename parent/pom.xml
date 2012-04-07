@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project 
-	xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -16,12 +14,16 @@
 		The parent of all projects accompanying the "Musings of a Programming Addict" blog. 
 		Contains in particular plugin related configuration such as version information etc.
 	</description>
-	
+
 	<developers>
 		<developer>
 			<name>Gunnar Morling</name>
 		</developer>
 	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<!-- Declares dependency versions -->
 	<dependencyManagement>
@@ -35,7 +37,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<build>
 		<!-- Specifies the plugin versions to be used -->
 		<pluginManagement>
@@ -52,25 +54,26 @@
 					<groupId>com.mycila.maven-license-plugin</groupId>
 					<artifactId>maven-license-plugin</artifactId>
 					<version>1.9.0</version>
-					<configuration>
-						<header>etc/license.txt</header>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		
+
 		<!-- Specifies the plugins that shall be executed for all child projects -->
-		<plugins> 
+		<plugins>
 			<plugin>
 				<groupId>com.mycila.maven-license-plugin</groupId>
 				<artifactId>maven-license-plugin</artifactId>
+				<configuration>
+					<header>etc/license.txt</header>
+					<strictCheck>true</strictCheck>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

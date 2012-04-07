@@ -6,3 +6,7 @@ derby.log
 .metadata
 test-output
 .DS_Store
+_archive
+*.iml
+*.ipr
+*.iws
