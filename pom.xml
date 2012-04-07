@@ -21,6 +21,7 @@
 		<module>parent</module>	
 		<module>jpa2-bv-integration</module>
 		<module>jaxws-on-spring</module>
+		<module>builder-pattern</module>
 	</modules>
 
 </project>
