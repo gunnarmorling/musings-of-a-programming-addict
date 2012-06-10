@@ -22,6 +22,7 @@
 		<module>jpa2-bv-integration</module>
 		<module>jaxws-on-spring</module>
 		<module>builder-pattern</module>
+		<module>spring-aop</module>
 	</modules>
 
 </project>

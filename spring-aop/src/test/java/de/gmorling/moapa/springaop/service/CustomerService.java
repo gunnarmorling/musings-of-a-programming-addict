@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.gmorling.moapa.springaop;
+package de.gmorling.moapa.springaop.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 public class CustomerService {
 
 	private static Logger logger = LoggerFactory.getLogger(CustomerService.class);
-	
+
 	public void createCustomer(String name) {
 		logger.info("Creating customer {}", name);
 	}

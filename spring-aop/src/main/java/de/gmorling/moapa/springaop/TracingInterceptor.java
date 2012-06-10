@@ -15,25 +15,52 @@
  */
 package de.gmorling.moapa.springaop;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.lang.reflect.Method;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TracingInterceptor implements MethodInterceptor {
 
-	private AtomicLong invocationCount = new AtomicLong();
-	
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
-	
-		invocationCount.incrementAndGet();
-		return invocation.proceed();
+
+		Logger logger = LoggerFactory.getLogger(invocation.getMethod().getDeclaringClass());
+
+		logger.info(">>> {}", new MethodToString(invocation.getMethod()));
+
+		try {
+			return invocation.proceed();
+		} finally {
+			logger.info("<<< {}", new MethodToString(invocation.getMethod()));
+		}
 	}
-	
-	public AtomicLong getInvocationCount() {
-		return invocationCount;
+
+	private static class MethodToString {
+
+		private final Method method;
+
+		private MethodToString(Method method) {
+			this.method = method;
+		}
+
+		@Override
+		public String toString() {
+
+			StringBuilder parameterString = new StringBuilder();
+
+			for (Class<?> oneParameterType : method.getParameterTypes()) {
+				if (parameterString.length() > 0) {
+					parameterString.append(", ");
+				}
+				parameterString.append(oneParameterType.getName());
+			}
+
+			return method.getName() + "(" + parameterString + ")";
+		}
 	}
 }

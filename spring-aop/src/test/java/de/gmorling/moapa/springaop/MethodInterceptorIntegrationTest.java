@@ -24,6 +24,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import de.gmorling.moapa.springaop.service.CustomerService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:META-INF/spring/application-context.xml")
 public class MethodInterceptorIntegrationTest {
@@ -32,7 +34,7 @@ public class MethodInterceptorIntegrationTest {
 	private CustomerService customerService;
 	
 	@Inject
-	private TracingInterceptor tracingInterceptor;
+	private InvocationCountInterceptor tracingInterceptor;
 	
 	@Test
 	public void shouldInvokeMethodInterceptor() {

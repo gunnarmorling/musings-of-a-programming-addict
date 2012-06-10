@@ -29,6 +29,8 @@
 	<context:component-scan base-package="de.gmorling.moapa.springaop"/>
 
 	<aop:config>
-        <aop:advisor advice-ref="tracingInterceptor" pointcut="execution(* de.gmorling.moapa.springaop.CustomerService.*(..))"/>
+		<aop:pointcut id="serviceLayer" expression="within(de.gmorling.moapa.springaop.service..*)"/>
+		<aop:advisor advice-ref="invocationCountInterceptor" pointcut-ref="serviceLayer"/>
+		<aop:advisor advice-ref="tracingInterceptor" pointcut-ref="serviceLayer"/>
     </aop:config>
 </beans>
